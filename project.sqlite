@@ -1,0 +1,39 @@
+ --table structure
+ SELECT *
+ FROM transactions
+ LIMIT 5;
+ 
+ --money in $
+ SELECT sum(money_in)
+ FROM transactions;
+ 
+ --money out in $
+ SELECT sum(money_out)
+ FROM transactions;
+ 
+ --BIT exploration
+ SELECT count(money_in)
+ FROM transactions;
+ 
+ SELECT currency, count(money_in)
+ FROM transactions
+ GrOUP BY 1
+ ORDER BY 2;
+ 
+ SELECT 21/43;
+ 
+ --largest transaction
+ SELECT max(money_in), max(money_out)
+ FROM transactions;
+ 
+ --avg money in ETH
+ SELECT currency, avg(money_in)
+ FROM transactions
+ WHERE currency = 'ETH';
+ 
+ --date ledger
+ SELECT date, 
+ round(avg(money_in),2) AS 'Avg Buy', 
+ round(avg(money_out),2) AS 'Avg Sell'
+ FROM transactions
+ GROUP BY 1;
